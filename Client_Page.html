@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client_Page</title>
+</head>
+<body>
+    <label for="name">Name</label> <br>
+  <input id="name" placeholder="Name"><br><br>
+    <label for="email">Email</label> <br>
+  <input id="email" placeholder="Email"><br><br>
+    <label for="mobile">Mobile</label> <br>
+  <input id="mobile" placeholder="Mobile (12 digits)"><br><br>
+    <label for="address">Address</label> <br>
+  <textarea id="address" placeholder="Address (optional)"></textarea><br><br>
+  
+  <button onclick="validate()">Submit</button>
+
+  <script>
+    function validate() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let address = document.getElementById("address").value.trim();
+
+      // Name 
+      if (name.length < 3 || name.length > 100) {
+        alert("Name must be 3 to 100 characters");
+        return;
+      }
+
+      // Email 
+      if (!email.includes("@") || !email.includes(".")) {
+        alert("Email id is not valid");
+        return;
+      }
+
+      // Mobile 
+      if (isNaN(mobile) || mobile.length !== 12) {
+        alert("Mobile must be 12 digits number");
+        return;
+      }
+
+      // Address 
+      if (address.length > 500) {
+        alert("Address cannot exceed 500 characters");
+        return;
+      }
+
+      // Success message
+      alert("Success!\nName: " + name + "\nEmail: " + email + "\nMobile: " + mobile + "\nAddress: " + (address || "N/A"));
+    }
+  </script>
+</body>
+</html>
